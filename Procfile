@@ -1,1 +1,1 @@
-web: index.js
+web: node webpack.config.js
