@@ -12,7 +12,8 @@ class CreateContact extends React.Component{
         this.handleCreateContact = this.handleCreateContact.bind(this);
     }
 
-    handleCreateContact(){
+    handleCreateContact(ev){
+        ev.preventDefault();
 
         const db = 'https://fast-harbor-86248.herokuapp.com/v1/dialer/';
 
