@@ -1,0 +1,27 @@
+.title{
+    width: 400px !important;
+    height: 800px !important;
+}
+
+.link{
+    text-decoration: none;
+}
+
+.tab{
+    font-size: 24px;
+    padding-top: 16px;
+    margin-bottom: 12px;
+    font-weight: 400;
+}
+
+.contact-list{
+    padding: 10px;
+}
+
+.contact-list-action{
+    padding-top: 50px;
+}
+
+.floater{
+    float: right;
+}
