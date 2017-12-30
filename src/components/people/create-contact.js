@@ -8,14 +8,14 @@ import PropTypes from 'prop-types';
 class CreateContact extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { value: '', isEditing: false};
+        this.state = { value: '', isCreating: false};
         this.handleCreateContact = this.handleCreateContact.bind(this);
     }
 
     handleCreateContact(ev){
         ev.preventDefault();
 
-        const db = 'https://fast-harbor-86248.herokuapp.com/v1/dialer/';
+        const db = 'https://fast-harbor-86248.herokuapp.com/v1/new/';
 
         const createContact = {
             name: this.refs.name.value,
@@ -30,7 +30,6 @@ class CreateContact extends React.Component{
             .catch(function (error) {
                 console.log(error);
             });
-
     }
 
     clearForm() {
@@ -47,7 +46,7 @@ class CreateContact extends React.Component{
                 <br/>
                 Address: <input ref="address" type="text" placeholder="Type your address"/>
                 <br/>
-                <button type="submit" className="btn btn-primary pull-right">Add Contact</button>
+                <button type="submit" className="btn btn-primary pull-right" >Add Contact</button>
                 <button type="button" className="btn btn-primary pull-left" onClick={this.clearForm.bind(this)}>Clear Form</button>
             </form>
         )

@@ -54,7 +54,7 @@ class ListExampleContacts extends React.Component {
                        <Button onClick={this.onCancelClick.bind(this)} className='red'
                                large style={{bottom: '15px', right: '8px'}} ><Icon center>cancel</Icon></Button>
                    </p>
-                   <CreateContact {...this.props}/>
+                   <CreateContact {...this.props} />
                </div>
            )
         }

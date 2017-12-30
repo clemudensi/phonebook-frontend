@@ -2,7 +2,7 @@ const webpack = require('webpack'),
     path = require('path'),
     fs = require('fs');
 
-const babelSettings = JSON.parse(fs.readFileSync(".babelrc"));
+// const babelSettings = JSON.parse(fs.readFileSync(".babelrc"));
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
@@ -70,8 +70,8 @@ if (process.env.NODE_ENV === 'production') {
             }
         })
     );
-    babelSettings.plugins.push("transform-react-inline-elements");
-    babelSettings.plugins.push("transform-react-constant-elements");
+    // babelSettings.plugins.push("transform-react-inline-elements");
+    // babelSettings.plugins.push("transform-react-constant-elements");
 
 } else {
     devtool = "inline-source-map"
