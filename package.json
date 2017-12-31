@@ -2,14 +2,12 @@
   "name": "contactlist",
   "version": "1.0.0",
   "description": "A react phonebook interface",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server -d --config webpack.dev.config.js --progress --colors",
-
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "prod": "SET NODE_ENV=production node server.js",
-    "build": "webpack --config webpack.config.js -p --progress --colors",
-    "postinstall": "webpack --config webpack.config.js -p --progress --colors"
+    "postinstall": "webpack -p"
 
   },
   "repository": {
