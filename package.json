@@ -5,10 +5,12 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack",
-    "webpack:prod": "webpack -p",
-    "server": "webpack-dev-server",
-    "start": "node server.js"
+    "start": "webpack-dev-server -d --config webpack.dev.config.js --progress --colors",
+
+    "prod": "SET NODE_ENV=production node server.js",
+    "build": "webpack --config webpack.config.js -p --progress --colors",
+    "postinstall": "webpack --config webpack.config.js -p --progress --colors"
+
   },
   "repository": {
     "type": "git",

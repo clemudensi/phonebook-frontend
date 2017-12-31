@@ -1,1 +1,1 @@
-web: node webpack.config.js
+web: node server.js NODE_ENV=production
