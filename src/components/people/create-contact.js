@@ -25,6 +25,7 @@ class CreateContact extends React.Component{
         console.log(createContact, 'Create-contact');
         axios.post(db, createContact)
             .then( (response) =>{
+                this.setState({status: response.status});
                 console.log(response);
             })
             .catch(function (error) {
@@ -32,12 +33,20 @@ class CreateContact extends React.Component{
             });
     }
 
+    reloadOnCreate(){
+        window.location.reload();
+    }
+
     clearForm() {
         this.refs.addForm.reset();
         this.refs.name.focus();
     }
 
-    render(){
+    renderForm(){
+        //noinspection BadExpressionStatementJS
+        if(this.state.status){
+            {this.reloadOnCreate()}
+        }
         return(
             <form ref="addForm" onSubmit={this.handleCreateContact.bind(this)} >
                 Name: <input ref="name" type="text" placeholder="Type your name"/>
@@ -49,6 +58,14 @@ class CreateContact extends React.Component{
                 <button type="submit" className="btn btn-primary pull-right" >Add Contact</button>
                 <button type="button" className="btn btn-primary pull-left" onClick={this.clearForm.bind(this)}>Clear Form</button>
             </form>
+        )
+    }
+
+    render(){
+        return(
+           <div>
+               {this.renderForm()}
+           </div>
         )
     }
 }
