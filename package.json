@@ -2,13 +2,13 @@
   "name": "contactlist",
   "version": "1.0.0",
   "description": "A react phonebook interface",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "prod": "SET NODE_ENV=production node server.js",
-    "postinstall": "webpack -p"
-
+    "webpack": "webpack",
+    "webpack:prod": "webpack -p",
+    "server": "webpack-dev-server",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -85,7 +85,7 @@
     "redux": "^3.6.0",
     "socket.io": "^2.0.4",
     "uglifyjs-webpack-plugin": "^1.1.4",
-    "webpack": "^2.7.0",
+    "webpack": "^3.10.0",
     "webpack-merge": "^4.1.1",
     "whatwg-fetch": "^2.0.3",
     "xoauth2": "^1.2.0"

@@ -1,21 +1,26 @@
-const path = require('path');
-const webpack = require('webpack');
+const webpack = require('webpack'),
+    path = require('path'),
+    fs = require('fs');
 
-module.exports = {
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
+const config = {
+
     devtool: 'inline-source-map',
     name: 'client',
     entry: [
-        './src/index.js'],
+            './src/index.js'],
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, 'public')
+        path: __dirname + '/public',
+
     },
     resolve: {
         extensions: ['.js', '.jsx']
     },
     devServer: {
         historyApiFallback: true,
-        port: 8080,
+        port: 3000,
         contentBase: "./public",
         hot: true,
 
@@ -44,10 +49,37 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
+        new UglifyJSPlugin({
+            sourceMap: true
+        }),
+        // new webpack.optimize.UglifyJsPlugin(),
         new webpack.DefinePlugin({
             "process.env": {
-                NODE_ENV: JSON.stringify("production")
+                'NODE_ENV': JSON.stringify('production')
             }
         })
     ]
 };
+
+if (process.env.NODE_ENV === 'production') {
+    config.plugins.push(
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                screw_ie8: true
+            }
+        })
+    );
+
+} else {
+    devtool = "inline-source-map";
+    config.devServer = {
+        historyApiFallback: true,
+        contentBase: './public',
+        hot: true,
+        inline: true,
+        host: "localhost",
+        port: 3000
+    };
+}
+
+module.exports = config;

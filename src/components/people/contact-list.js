@@ -87,7 +87,7 @@ class ListExampleContacts extends React.Component {
     }
 
     render(){
-        console.log(this.props.contactList);
+        // console.log(this.props.contactList);
         console.log(this.state.contactList);
         return (
             <div>

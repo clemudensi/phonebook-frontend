@@ -1,17 +1,40 @@
 /**
- * Created by SLEEK on 12/31/2017.
+ * Created by SLEEK on 11/30/2017.
  */
 const express = require('express');
 const app = express();
 
-// Since the root/src dir contains our index.html
+const webpack = require('webpack');
+const webpackconfig = require('./webpack.config.js');
+const webpackMiddleware = require("webpack-dev-middleware");
+const compiler = webpack(webpackconfig);
+
+const port = process.env.PORT || 8000;
+
+app.use(webpackMiddleware(compiler, {
+    noInfo: false,
+    quiet: false,
+    lazy: true,
+    watchOptions: {
+        aggregateTimeout: 300,
+        poll: true
+    },
+    publicPath: "/assets/",
+    index: "index.html",
+    headers: { "X-Custom-Header": "yes" },
+    stats: {
+        colors: true
+    },
+    reporter: null,
+    serverSideRender: true,
+}));
+
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 });
-app.use(express.static(__dirname + './public'));
 
-// Heroku bydefault set an ENV variable called PORT=443
-//  so that you can access your site with https default port.
-// Falback port will be 8080; basically for pre-production test in localhost
-// You will use $ npm run prod for this
-app.listen(process.env.PORT || 8080);
+app.use(express.static("./public"));
+app.listen(port, function(){
+    console.log('App is running on port 5000');
+});
