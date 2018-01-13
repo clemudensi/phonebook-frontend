@@ -13,6 +13,7 @@ import {Button, Icon} from "react-materialize";
 import Clem from '../../../public/images/clem.jpg';
 import PropTypes from 'prop-types';
 import Search from "./search";
+import LoaderHOC from '../../HOC/LoaderHOC';
 
 class ListExampleContacts extends React.Component {
 
@@ -96,7 +97,7 @@ class ListExampleContacts extends React.Component {
     }
 }
 
-export default ListExampleContacts;
+export default LoaderHOC(ListExampleContacts);
 
 ListExampleContacts.propTypes = {
     id: PropTypes.string,
