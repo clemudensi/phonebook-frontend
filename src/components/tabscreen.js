@@ -3,8 +3,8 @@
  */
 import React from 'react';
 import {Tabs, Tab} from 'react-materialize';
-import ContactList from './people/contact-list';
-import CallHistory from "./call-history/history";
+import ListExampleContacts from '../containers/contact-list';
+import CallHistory from "../containers/history";
 
 const styles = {
     headline: {
@@ -22,8 +22,8 @@ class TabsExampleSimple extends React.Component{
             <div className="title">
                 <Tabs className='tab-demo z-depth-1'>
                     <Tab title="Dialer" tabWidth={4}><h2 style={styles.headline}>Dial Pad Original</h2></Tab>
-                    <Tab title="Call History" tabWidth={4}><CallHistory callHistory={this.props.callHistory} /></Tab>
-                    <Tab title="People" active={true} tabWidth={4}><ContactList contactList={this.props.contactList}/></Tab>
+                    <Tab title="Call History" tabWidth={4}><CallHistory /></Tab>
+                    <Tab title="People" active={true} tabWidth={4}><ListExampleContacts /></Tab>
                 </Tabs>
             </div>
         )

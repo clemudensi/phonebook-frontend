@@ -45,11 +45,11 @@ class ContactForm extends React.Component{
             return (
                 <div>
                     <form onSubmit={this.handleContactUpdate.bind(this)}>
-                        Name: <input type="text" defaultValue={contact.name} ref="name"/>
+                        <h6>Name:</h6> <input type="text" defaultValue={contact.name} ref="name"/>
                         <br/>
-                        Phone number: <input type="text" defaultValue={contact.phone_number} ref="phone_number"/>
+                        <h6>Phone number:</h6> <input type="text" defaultValue={contact.phone_number} ref="phone_number"/>
                         <br/>
-                        Address: <input type="text" defaultValue={contact.address} ref="address"/>
+                        <h6>Address:</h6> <input type="text" defaultValue={contact.address} ref="address"/>
                     </form>
                     <div className="contact-list">
                         <Button onClick={this.handleContactUpdate.bind(this)}>Save</Button>

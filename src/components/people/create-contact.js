@@ -22,6 +22,14 @@ class CreateContact extends React.Component{
             phone_number: this.refs.phone_number.value,
             address: this.refs.address.value
         };
+
+        const validateInput = CreateContact.validateInput(createContact.name);
+
+        if (validateInput) {
+            this.setState({ error: validateInput });
+            return;
+        }
+
         console.log(createContact, 'Create-contact');
         axios.post(db, createContact)
             .then( (response) =>{
@@ -33,7 +41,7 @@ class CreateContact extends React.Component{
             });
     }
 
-    reloadOnCreate(){
+    static reloadOnCreate(){
         window.location.reload();
     }
 
@@ -42,16 +50,21 @@ class CreateContact extends React.Component{
         this.refs.name.focus();
     }
 
+    static validateInput(name){
+        if (name === ''){
+            return "Please enter a name";
+        }
+    }
+
     renderForm(){
-        //noinspection BadExpressionStatementJS
         if(this.state.status){
-            {this.reloadOnCreate()}
+            {CreateContact.reloadOnCreate()}
         }
         return(
             <form ref="addForm" onSubmit={this.handleCreateContact.bind(this)} >
-                Name: <input ref="name" type="text" placeholder="Type your name"/>
+                Name: <input ref="name" type="text" placeholder="Type your name" />
                 <br/>
-                Phone number: <input ref="phone_number" type="text" placeholder="Type your phone number"/>
+                Phone number: <input ref="phone_number" type="text" placeholder="Type your phone number" className="form-control validate"/>
                 <br/>
                 Address: <input ref="address" type="text" placeholder="Type your address"/>
                 <br/>

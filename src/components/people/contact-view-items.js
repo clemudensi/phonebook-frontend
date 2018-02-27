@@ -76,7 +76,7 @@ class ContactView extends React.Component{
                     </div>
                 </div>
         ) : (
-            <div>Error: Contact doesn't exist</div>
+            <div>Contact: Loading......</div>
 
         );
     };
