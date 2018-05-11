@@ -47,7 +47,7 @@ class CallHistory extends React.Component {
     }
 
     renderHistory(){
-        return _.map(this.props.history, (history, key) =>
+        return _.map(this.props.history.sort().reverse(), (history, key) =>
 
             <div key={key}>
                 <div>
@@ -63,7 +63,6 @@ class CallHistory extends React.Component {
     }
 
     render(){
-        console.log(this.props.history, "History");
        return(
            this.state.status ? CallHistory.refreshDelete()
            : <div>

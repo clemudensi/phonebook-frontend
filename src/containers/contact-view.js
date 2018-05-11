@@ -89,7 +89,7 @@ class ContactView extends React.Component{
 
     render(){
         return(
-            this.state.status ? <Redirect to="/" />
+            this.state.status ? this.props.history.push('/')
                 : <div className="title">
                 {this.renderContactAction()}
             </div>
@@ -98,8 +98,7 @@ class ContactView extends React.Component{
 }
 
 
-function mapStateToProps(state, ownProps){
-    console.log(ownProps, "Own Props");
+function mapStateToProps(state){
     return {
         history: state.history,
         contactView: state.contactView,

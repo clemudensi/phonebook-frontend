@@ -53,6 +53,18 @@ class ListExampleContacts extends React.Component {
         this.setState({search: event.target.value})
     };
 
+    sortOn(property){
+        return function(a, b){
+            if(a[property] < b[property]){
+                return -1;
+            }else if(a[property] > b[property]){
+                return 1;
+            }else{
+                return 0;
+            }
+        }
+    }
+
     renderCreate(){
         if(this.state.isCreating){
            return(
@@ -69,6 +81,7 @@ class ListExampleContacts extends React.Component {
         return(
             <div>
                 <p style={{textAlign: "right"}}>
+                <h6 style={{color: "green"}}>Total number of contacts: {this.props.contactList.length}</h6>
                 <Button onClick={this.onCreateClick.bind(this)} className='green'
                         large style={{bottom: '15px', right: '8px'}} ><Icon center>book</Icon></Button>
                 </p>
@@ -81,7 +94,8 @@ class ListExampleContacts extends React.Component {
     }
 
     renderContact(){
-        const searchContact = _.filter(this.state.contactList, (contact => {return contact.name.toLowerCase().indexOf(this.state.search) !== -1}));
+        const sortedContacList = this.props.contactList.sort(this.sortOn("name"));
+        const searchContact = _.filter(sortedContacList, (contact => {return contact.name.toLowerCase().indexOf(this.state.search) !== -1}));
 
         return _.map(searchContact, (contact, key) => <ListItem
                                                                             key={key}
@@ -94,8 +108,6 @@ class ListExampleContacts extends React.Component {
     }
 
     render(){
-        console.log(this.props.contactList, 'State props');
-        console.log(this.state.contactList, 'STATE1');
         return (
             <div>
                 {this.renderCreate()}
