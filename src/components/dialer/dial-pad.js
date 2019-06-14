@@ -10,7 +10,7 @@ const Dialpad = () => {
             <Dial />
         </div>
     )
-}
+};
 
 
 

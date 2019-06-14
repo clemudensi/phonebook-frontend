@@ -1,2 +1,6 @@
 node_modules/
 .idea/
+/src/components/call-history/
+/src/components/people/contact-list.js
+/src/components/people/contact-view-items.js
+/src/HOC/
